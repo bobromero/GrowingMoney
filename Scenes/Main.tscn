@@ -6,4 +6,5 @@
 
 [node name="Player" parent="." instance=ExtResource("1_dawyn")]
 position = Vector2(285, 229)
-SPEED = 800.0
+SPEED = 300.0
+dashPower = 600.0
