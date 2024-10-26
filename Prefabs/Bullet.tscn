@@ -8,6 +8,7 @@ size = Vector2(25, 25)
 
 [node name="Bullet" type="CharacterBody2D"]
 script = ExtResource("1_ox8vo")
+bulletSpeed = 500.0
 
 [node name="Area2D" type="Area2D" parent="." groups=["Bullet"]]
 
