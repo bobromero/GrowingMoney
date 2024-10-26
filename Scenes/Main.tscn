@@ -8,3 +8,6 @@
 position = Vector2(285, 229)
 SPEED = 300.0
 dashPower = 600.0
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(362, 270)

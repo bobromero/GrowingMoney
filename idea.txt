@@ -1,2 +1,15 @@
 souls like 2d dungeon crawler, get as much money as possible
 auto shooter enemy swarm
+
+
+Goal shift, just get a game finished
+start menu scene
+	- Play and exit buttons (DONE)
+battle scene
+	- Move around and dodge as a player (DONE)
+	- spawn enemies (DONE)
+	- enemies chase player (DONE)
+	- make player lose health if hit by enemy (Done)
+	- player auto shoots enemies and they disappear when they die
+end game scene
+	- try again or exit (DONE)

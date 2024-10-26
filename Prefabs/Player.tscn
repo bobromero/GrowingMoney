@@ -6,16 +6,22 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gylqd"]
 size = Vector2(120, 120)
 
-[node name="Player" type="Node2D" node_paths=PackedStringArray("controller")]
+[node name="CharacterBody2D" type="CharacterBody2D" node_paths=PackedStringArray("controller")]
 script = ExtResource("1_ltw08")
-controller = NodePath("CharacterBody2D")
+controller = NodePath(".")
 
-[node name="Camera2D" type="Camera2D" parent="."]
-
-[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
-
-[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
+[node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_qmmoa")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_gylqd")
+disabled = true
+
+[node name="Player" type="Node2D" parent="."]
+
+[node name="Area2D" type="Area2D" parent="." groups=["Player"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_gylqd")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
