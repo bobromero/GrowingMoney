@@ -5,11 +5,12 @@ var GameRunning = false
 var deaths:int = 0
 
 var enemySpawnTimer:float = 0
+var enemySpawnFrequency: float = .8
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if GameRunning:
 		enemySpawnTimer += delta
-		if enemySpawnTimer >= 1.5:
+		if enemySpawnTimer >= enemySpawnFrequency:
 			enemySpawnTimer = 0
 			_spawnEnemy()
 	

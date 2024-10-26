@@ -13,9 +13,10 @@ var player_in_attack_range = false
 @export var health: int = 2
 
 func _physics_process(delta: float) -> void:
+	if health <= 0:
+		queue_free()
 	
-	position += (Player.playerPos - position) / speed
-	
+	velocity = (Player.playerPos - position).normalized() * speed
 	move_and_slide()
 
 
