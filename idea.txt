@@ -28,3 +28,11 @@ waves are added and cool
 now I want to add a exlposion power up
 
 im thinking like a bullet that hurts everything in a big area2d that is calculated on impact
+
+I have added the explosion, now i need to make the power up
+
+I would want the power up to also have an arrow pointing to the powerup so you know it is there
+
+power ups could be a system, I will do this in time
+
+I can make a good camera that follows the player

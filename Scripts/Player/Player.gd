@@ -28,7 +28,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	_updateHud()
 		
-	#_spawnBullets(delta)
+	_spawnBullets(delta)
 	if Input.is_action_just_pressed("Use"):
 		if useable != null:
 			Use(useable)

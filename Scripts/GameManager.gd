@@ -10,7 +10,7 @@ var waveNumber:int = 0
 func _process(delta: float) -> void:
 	if GameRunning:
 		_spawnEnemies(delta)
-		
+	
 
 
 

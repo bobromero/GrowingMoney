@@ -29,4 +29,8 @@ shape = SubResource("RectangleShape2D_gylqd")
 
 [node name="Hud" parent="CanvasLayer" instance=ExtResource("3_dmd7r")]
 
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(4, 0)
+zoom = Vector2(0.6, 0.6)
+
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

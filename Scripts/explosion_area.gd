@@ -1,7 +1,7 @@
 extends Area2D
 
 var timer:float = 0
-var flash:float = .5
+var flash:float = .2
 var Damage:int = 3
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
