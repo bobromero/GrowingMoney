@@ -24,4 +24,8 @@ disabled = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("RectangleShape2D_3ek3t")
 
+[node name="Label" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

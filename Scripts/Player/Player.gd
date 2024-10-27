@@ -26,7 +26,11 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	_updateHud()
 		
-	_spawnBullets(delta)
+	#_spawnBullets(delta)
+	if Input.is_action_just_pressed("Use"):
+		var explosion = preload("res://Prefabs/Explosion.tscn").instantiate()
+		explosion.position = playerPos
+		get_tree().current_scene.add_child(explosion)
 		
 	_iFrames(delta)
 	

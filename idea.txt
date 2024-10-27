@@ -21,4 +21,10 @@ now i will get a random idea and implement it somehow
 1. long term investment
 2. space
 3. pirates
-4. waves
+4. waves (DONE)
+
+waves are added and cool
+
+now I want to add a exlposion power up
+
+im thinking like a bullet that hurts everything in a big area2d that is calculated on impact

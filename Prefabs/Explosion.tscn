@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://oytcn6mm7yjf"]
+
+[ext_resource type="Script" path="res://Scripts/explosion.gd" id="1_2cx1o"]
+[ext_resource type="Texture2D" uid="uid://12e75j88764l" path="res://icon.svg" id="2_rw3dp"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yn0r0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_djgie"]
+
+[node name="Explosion" type="CharacterBody2D"]
+script = ExtResource("1_2cx1o")
+bulletSpeed = 1000.0
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Area2D"]
+modulate = Color(1, 0, 0, 1)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("2_rw3dp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_yn0r0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_djgie")
+disabled = true
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

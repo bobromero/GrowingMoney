@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+class_name Enemy
+
 const JUMP = 40
 
 @export var speed = 80    # Higher speed = slower enemy and vice versa
@@ -8,9 +10,11 @@ const JUMP = 40
 @export var knockback_enabled = false
 @export var knockback_timer = 0.0  
 
+
 var player_in_attack_range = false
 
 @export var health: int = 2
+
 
 func _physics_process(delta: float) -> void:
 	if health <= 0:
