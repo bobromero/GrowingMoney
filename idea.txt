@@ -36,3 +36,5 @@ I would want the power up to also have an arrow pointing to the powerup so you k
 power ups could be a system, I will do this in time
 
 I can make a good camera that follows the player
+
+game is fun actually, maybe add a time slow as a variant to the dash?

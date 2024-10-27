@@ -2,13 +2,15 @@ extends CharacterBody2D
 
 class_name Player
 
+static var Instance : Player
+
 @export var controller : CharacterBody2D
 
 @export var SPEED: float = 2000
 
 @export var dashPower: float = 100
 
-@export var health = 999
+@export var health = 3
 
 var useable = "res://Prefabs/Explosion.tscn"
 
@@ -16,16 +18,14 @@ var score:int = 0
 
 static var playerPos: Vector2
 
-var dodgeTimer:float = 0
-var dodgeTimeGap:float = .2
-var shouldDodge:bool = false
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass
+	Instance = self
 
 
-func _process(delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	_updateHud()
 		
 	_spawnBullets(delta)
@@ -45,6 +45,10 @@ func _process(delta: float) -> void:
 	if health <= 0:
 		GameManager.PlayerDeath()
 	
+	
+func AddScore(value:int):
+	score += value
+
 func Use(path: String):
 	var item:Node2D = load(path).instantiate()
 	#item.position = playerPos
@@ -80,15 +84,18 @@ func _iFrames(delta: float):
 func _movement() -> Vector2:
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
-	var direction : Vector2 = Input.get_vector("left", "right", "up", "down")
+	var direction : Vector2 = Input.get_vector("left", "right", "up", "down").normalized()
 	if direction:
 		controller.velocity = direction * SPEED
 	else:
-		controller.velocity.x = move_toward(controller.velocity.x, 0, SPEED)
-		controller.velocity.y = move_toward(controller.velocity.y, 0, SPEED)
+		controller.velocity = Vector2.ZERO
 	
 	return direction
 
+
+var dodgeTimer:float = 0
+var dodgeTimeGap:float = .5
+var shouldDodge:bool = false
 func _dodge(direction : Vector2, delta:float):
 	if direction.length() > 0 and !shouldDodge and Input.is_action_just_pressed("dodge"):
 		shouldDodge = true
