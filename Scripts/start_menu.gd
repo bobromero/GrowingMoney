@@ -9,7 +9,7 @@ func _process(delta: float) -> void:
 func UpdateText():
 	if GameManager.deaths > 0:
 		$VBoxContainer/StartButton.text = tryAgainText
-		$VBoxContainer/Label.text = str("Deaths: ", GameManager.deaths)
+		$VBoxContainer/Label.text = str("Deaths: ", GameManager.deaths) + str("\tWave: ", GameManager.waveNumber)
 	else:
 		$VBoxContainer/StartButton.text = startText
 

@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://ckctvqki4lnd8"]
+[gd_scene load_steps=5 format=3 uid="uid://ckctvqki4lnd8"]
 
 [ext_resource type="Script" path="res://Scripts/Player/Player.gd" id="1_ltw08"]
 [ext_resource type="Texture2D" uid="uid://12e75j88764l" path="res://icon.svg" id="1_qmmoa"]
+[ext_resource type="PackedScene" uid="uid://cj0ekovrxpynd" path="res://Prefabs/Hud.tscn" id="3_dmd7r"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gylqd"]
 size = Vector2(120, 120)
@@ -23,5 +24,9 @@ disabled = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("RectangleShape2D_gylqd")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Hud" parent="CanvasLayer" instance=ExtResource("3_dmd7r")]
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

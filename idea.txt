@@ -10,6 +10,15 @@ battle scene
 	- spawn enemies (DONE)
 	- enemies chase player (DONE)
 	- make player lose health if hit by enemy (Done)
-	- player auto shoots enemies and they disappear when they die
+	- player auto shoots enemies and they disappear when they die (Done)
 end game scene
 	- try again or exit (DONE)
+
+that was a very good experience
+
+now i will get a random idea and implement it somehow
+
+1. long term investment
+2. space
+3. pirates
+4. waves

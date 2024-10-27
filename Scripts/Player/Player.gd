@@ -10,6 +10,8 @@ class_name Player
 
 @export var health = 3
 
+var score:int = 0
+
 static var playerPos: Vector2
 
 var dodgeTimer:float = 0
@@ -20,16 +22,11 @@ var shouldDodge:bool = false
 func _ready() -> void:
 	pass
 
-var BulletSpawnTimer = 0
-var BulletSpawnFrequency = 0.5
+
 func _process(delta: float) -> void:
-	BulletSpawnTimer += delta
-	if GameManager.NumEnemies() > 0 and BulletSpawnTimer >= BulletSpawnFrequency:
-		var bullet = preload("res://Prefabs/Bullet.tscn").instantiate()
-		bullet.position = playerPos
-		get_tree().current_scene.add_child(bullet)
-		BulletSpawnTimer = 0
+	_updateHud()
 		
+	_spawnBullets(delta)
 		
 	_iFrames(delta)
 	
@@ -42,8 +39,19 @@ func _process(delta: float) -> void:
 	if health <= 0:
 		GameManager.PlayerDeath()
 	
-func _SpawnBullets(delta: float):
-	pass	
+func _updateHud():
+	$CanvasLayer/Hud/WaveLabel.text = str("Wave: ", GameManager.waveNumber)
+	$"CanvasLayer/Hud/Score Label".text = str("\tScore: ", score)
+
+var BulletSpawnTimer = 0
+var BulletSpawnFrequency = 0.5
+func _spawnBullets(delta: float):
+	BulletSpawnTimer += delta
+	if GameManager.NumEnemies() > 0 and BulletSpawnTimer >= BulletSpawnFrequency:
+		var bullet = preload("res://Prefabs/Bullet.tscn").instantiate()
+		bullet.position = playerPos
+		get_tree().current_scene.add_child(bullet)
+		BulletSpawnTimer = 0
 
 var iframes:float = 3
 var invincible:bool = false
