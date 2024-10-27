@@ -4,6 +4,8 @@ class_name Bullet
 
 @export var bulletSpeed: float = 100
 
+var Damage:int = 1
+
 var Enemies:Array[Node2D]
 var closestEnemy:Node2D
 
@@ -11,7 +13,7 @@ var closestEnemy:Node2D
 func _ready() -> void:
 	_getClosestEnemy()
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	if closestEnemy != null:
 		velocity = (position - closestEnemy.global_position).normalized() * -bulletSpeed
 		move_and_slide()
@@ -20,7 +22,7 @@ func _physics_process(delta: float) -> void:
 	else:
 		_getClosestEnemy()
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	pass
 
 func _getEnemies() -> Array[Node]:
@@ -35,3 +37,9 @@ func _getClosestEnemy():
 			closestDist = dist
 			closestEnemy = e
 		
+
+
+func _on_area_2d_area_entered(area: Area2D) -> void:
+	if area.is_in_group("Enemy"):
+		var enemy: Enemy = area.get_parent()
+		enemy.health -= Damage

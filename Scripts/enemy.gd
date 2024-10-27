@@ -16,7 +16,7 @@ var player_in_attack_range = false
 @export var health: int = 2
 
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	if health <= 0:
 		queue_free()
 	
@@ -26,5 +26,5 @@ func _physics_process(delta: float) -> void:
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	if area.is_in_group("Bullet"):
-		health -= 1
-		area.get_parent().queue_free()
+		#health -= 1
+		pass

@@ -8,7 +8,9 @@ class_name Player
 
 @export var dashPower: float = 100
 
-@export var health = 3
+@export var health = 999
+
+var useable = "res://Prefabs/Explosion.tscn"
 
 var score:int = 0
 
@@ -28,9 +30,9 @@ func _process(delta: float) -> void:
 		
 	#_spawnBullets(delta)
 	if Input.is_action_just_pressed("Use"):
-		var explosion = preload("res://Prefabs/Explosion.tscn").instantiate()
-		explosion.position = playerPos
-		get_tree().current_scene.add_child(explosion)
+		if useable != null:
+			Use(useable)
+		
 		
 	_iFrames(delta)
 	
@@ -43,6 +45,12 @@ func _process(delta: float) -> void:
 	if health <= 0:
 		GameManager.PlayerDeath()
 	
+func Use(path: String):
+	var item:Node2D = load(path).instantiate()
+	#item.position = playerPos
+	add_child(item)
+
+
 func _updateHud():
 	$CanvasLayer/Hud/WaveLabel.text = str("Wave: ", GameManager.waveNumber)
 	$"CanvasLayer/Hud/Score Label".text = str("\tScore: ", score)

@@ -3,7 +3,7 @@ extends Control
 var startText: String = "Start"
 var tryAgainText: String = "Try Again!"
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	UpdateText()
 
 func UpdateText():

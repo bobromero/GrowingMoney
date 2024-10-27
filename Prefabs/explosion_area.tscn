@@ -1,14 +1,20 @@
-[gd_scene load_steps=3 format=3 uid="uid://cw7hk4dxafvo0"]
+[gd_scene load_steps=4 format=3 uid="uid://cw7hk4dxafvo0"]
 
+[ext_resource type="Script" path="res://Scripts/explosion_area.gd" id="1_1ns6w"]
 [ext_resource type="Texture2D" uid="uid://12e75j88764l" path="res://icon.svg" id="1_jhj4q"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l3nb5"]
 size = Vector2(150, 150)
 
 [node name="ExplosionArea" type="Area2D" groups=["Bullet"]]
+script = ExtResource("1_1ns6w")
 
 [node name="explosion" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_l3nb5")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(1, 0, 1, 1)
+scale = Vector2(1.2, 1.2)
 texture = ExtResource("1_jhj4q")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

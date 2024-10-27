@@ -3,18 +3,11 @@ extends Bullet
 func _ready() -> void:
 	_getClosestEnemy()
 	
-var destroy: bool =false
-
-func _physics_process(delta: float) -> void:
-	if destroy:
-		queue_free()
+func _physics_process(_delta: float) -> void:
 	if closestEnemy != null:
-		velocity = (position - closestEnemy.global_position).normalized() * -bulletSpeed
+		velocity = (global_position - closestEnemy.global_position).normalized() * -bulletSpeed
 		move_and_slide()
-		if abs(position.length() - closestEnemy.global_position.length()) <= 5:
-			var explosion = preload("res://Prefabs/explosion_area.tscn").instantiate()
-			self.add_child(explosion)
-			destroy=true
+		
 	elif GameManager.NumEnemies() <= 0:
 		queue_free()
 	else:
@@ -24,6 +17,7 @@ func _physics_process(delta: float) -> void:
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	if area.is_in_group("Enemy"):
-		#spawn explosion
-		#$ExplosionArea/explosion.add_to_group("Bullet")
-		pass
+		var explosion = preload("res://Prefabs/explosion_area.tscn").instantiate()
+		explosion.global_position = self.global_position
+		get_tree().current_scene.call_deferred("add_child", explosion)
+		queue_free()
